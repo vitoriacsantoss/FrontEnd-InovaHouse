@@ -19,6 +19,7 @@
   gap: 4rem;
   font-size: 1.2rem;
   color: #000;
+
 }
 
 .links a {
@@ -30,5 +31,6 @@
   display: flex;
   gap: 4rem;
   font-size: 2.2rem;
+  margin: auto;
 }
 </style>

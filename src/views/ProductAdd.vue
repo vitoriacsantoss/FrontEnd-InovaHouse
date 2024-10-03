@@ -3,11 +3,11 @@ import { onMounted, reactive, ref } from 'vue';
 
 import ModalAddCategory from '@/components/ModalAddCategory.vue';
 import { useCategoryStore } from '@/stores/category';
-import { useProductStore } from '@/stores/product';
+import { useImoveisStore } from '@/stores/imovel';
 import { useUploaderStore } from '@/stores/uploader';
 
 const categoryStore = useCategoryStore();
-const productStore = useProductStore();
+const imoveisStore = useImoveisStore();
 const uploaderStore = useUploaderStore();
 
 const showModal = ref(false);
@@ -18,7 +18,7 @@ const previewImage = ref('');
 const product = reactive({
   title: '',
   description: '',
-  category: '',
+  category: '', 
   image_attachment_key: '',
   price: '',
   stock: '',
@@ -31,7 +31,7 @@ const uploadImage = (e) => {
 
 async function save() {
   product.image_attachment_key = await uploaderStore.uploadImage(file.value);
-  await productStore.createProduct(product);
+  await imoveisStore.createProduct(product);
   Object.assign(product, {
     title: '',
     description: '',
@@ -43,11 +43,15 @@ async function save() {
 }
 
 onMounted(async () => {
-  await categoryStore.getCategories();
+  await imoveisStore.getImoveis();
+  console.log(imoveisStore.imoveis)
 });
 </script>
 <template>
-  
+  <!-- {{ imoveisStore.imoveis }} -->
+    <!-- <div v-for="item in imoveisStore.imoveis">
+      {{ item }}
+    </div> -->
   <h1>Adicionar Produto</h1>
   <form class="form" @submit.prevent="save">
     <div class="row-form">
