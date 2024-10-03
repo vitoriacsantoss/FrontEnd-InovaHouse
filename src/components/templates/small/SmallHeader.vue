@@ -1,5 +1,5 @@
 <script setup>
-import LogoTitle from '@/components/templates/LogoTitle.vue';
+// import LogoTitle from '@/components/templates/LogoTitle.vue';
 </script>
 
 <template>
