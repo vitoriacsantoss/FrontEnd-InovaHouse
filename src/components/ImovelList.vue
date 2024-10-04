@@ -43,6 +43,7 @@ onMounted(async () => {
         <img src="/casa.jpeg" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
+      
       <div class="imovel-title-price">
         <p> 
           {{ formatPrice(imovel.preco * 1) }}</p>
