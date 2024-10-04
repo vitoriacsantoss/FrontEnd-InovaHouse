@@ -2,6 +2,10 @@
   <div>
     <!-- Seção Amarela com a Mensagem -->
     <section class="header-banner">
+      <div class="logo1">
+          <img src="@/assets/logo.png" alt="Logo" />
+          <!-- <h2>Consultoria Imobiliária</h2> -->
+        </div>
       <h1>Querendo realizar seu sonho?</h1>
       <button class="contact-button">Entrar em contato</button>
       <!-- <div class="contact-button" @click="$router.push({ name: '/' })"> -->
@@ -12,10 +16,8 @@
     <!-- Rodapé -->
     <footer class="footer">
       <div class="container">
-        <div class="logo">
-          <!-- <img src="@/assets/logo.png" alt="Logo" /> -->
-          <h2>Consultoria Imobiliária</h2>
-        </div>
+        <!-- <div class="logo1"><img src="@/assets/logo.png" alt="Logo" /></div> -->
+        
         <div class="content">
           <div class="contact">
             <h3>Contato</h3>
@@ -55,6 +57,13 @@ export default {
 </script>
 
 <style scoped>
+.logo1 {
+  display: flex;
+  height: 100px;
+  margin-top: 30px;
+  margin-bottom: -70px;
+  margin-left: 40px;
+}
 /* Estilo da Seção Amarela */
 .header-banner {
   background-color: #ff8c32;
