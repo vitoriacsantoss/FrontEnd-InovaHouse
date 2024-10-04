@@ -5,28 +5,31 @@
 
 <template>
   <div id="layout-medium">
-    <header>
+
       <medium-header />
-    </header>
-    <main>
+      
+    <aside>
       <router-view />
-    </main>
-    <footer>
+    </aside>
       <medium-footer />
-    </footer>
   </div>
 </template>
 
 <style scoped>
 #layout-medium {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  border: 2px solid red;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 6fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'header'
     'main'
     'footer';
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 header {
@@ -34,7 +37,8 @@ header {
   widows: 100vw;
   justify-content: flex-end;
   padding: 1.5rem;
-  grid-area: header;
+  /* grid-area: header; */
+  border: 2px solid red;
 }
 
 aside {
@@ -45,7 +49,10 @@ aside {
   justify-content: space-between;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  grid-area: aside;
+  /* grid-area: aside; */
+  border: 2px solid red;
+  margin: 20px auto;
+  padding: 1rem;
 }
 
 main {
@@ -56,10 +63,12 @@ main {
 
 footer {
   display: flex;
+  margin-top: 20px;
   justify-content: space-between;
   align-items: center;
   padding: 3rem;
   background-color: #eeeeee;
-  grid-area: footer;
+  /* grid-area: footer; */
+  border: 2px solid red;
 }
 </style>
