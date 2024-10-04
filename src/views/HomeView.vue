@@ -1,5 +1,5 @@
 <script setup>
-import ProductList from '@/components/ProductList.vue';
+import ImovelList from '@/components/ImovelList.vue';
 
 import { onMounted } from 'vue';
 
@@ -16,5 +16,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <product-list />
+  <imovel-list />
 </template>

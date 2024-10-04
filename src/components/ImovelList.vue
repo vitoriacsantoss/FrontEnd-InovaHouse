@@ -28,8 +28,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="product-list">
-    <router-link :to="{ name: 'ProductAdd' }">
+  <div class="imovel-list">
+    <router-link :to="{ name: 'ImoveltAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
       </button>
@@ -37,17 +37,17 @@ onMounted(async () => {
     <div v-if="imoveisStore.products.length === 0">
       <p>Produtos não encontrados!!!</p>
     </div>
-    <div v-for="product in imoveisStore.products" :key="product.id" class="product-card">
-      <div class="product-img-wrapper">
-        <img :src="product.image?.url" alt="product.name" />
+    <div v-for="imovel in imoveisStore.products" :key="imovel.id" class="imovel-card">
+      <div class="imovel-img-wrapper">
+        <img :src="imovel.image?.url" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
-      <div class="product-title-price">
-        <p>{{ formatTitle(product.title) }}</p>
-        <p>{{ formatPrice(product.price * 1) }}</p>
+      <div class="imovel-title-price">
+        <p>{{ formatTitle(imovel.title) }}</p>
+        <p>{{ formatPrice(imovel.price * 1) }}</p>
       </div>
-      <div class="product-description-stars">
-        <p>{{ formatDescription(product.description) }}</p>
+      <div class="imovel-description-stars">
+        <p>{{ formatDescription(imovel.description) }}</p>
         <div class="stars">
           <i class="mdi mdi-star" />
           <i class="mdi mdi-star" />
@@ -84,7 +84,7 @@ onMounted(async () => {
   font-size: 2rem;
 }
 
-.product-list {
+.imovel-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -92,12 +92,12 @@ onMounted(async () => {
   padding: 1rem;
 }
 
-.product-card {
+.imovel-card {
   width: 225px;
   font-family: 'Belleza', sans-serif;
 }
 
-.product-img-wrapper {
+.imovel-img-wrapper {
   display: flex;
   justify-content: center;
   align-items: top;
@@ -108,32 +108,32 @@ onMounted(async () => {
   height: 201px;
 }
 
-.product-img-wrapper img {
+.imovel-img-wrapper img {
   width: 153px;
   height: 170px;
   object-fit: cover;
 }
 
-.product-title-price {
+.imovel-title-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-.product-title-price p {
+.imovel-title-price p {
   font-weight: bold;
   font-size: 16px;
   color: #010101;
 }
 
-.product-description-stars {
+.imovel-description-stars {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-.product-description-stars p {
+.imovel-description-stars p {
   font-size: 12px;
   color: #535050;
 }

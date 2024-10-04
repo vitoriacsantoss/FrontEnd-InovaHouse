@@ -7,7 +7,17 @@
           <!-- <h2>Consultoria Imobiliária</h2> -->
         </div>
       <h1>Querendo realizar seu sonho?</h1>
-      <button class="contact-button">Entrar em contato</button>
+      <div class="wrap">
+        <router-link to="/login">
+          <button class="contact-button mr">Página de Login</button>
+        </router-link>
+        <router-link to="/">
+        <button class="contact-button mr">Página Inicial</button>
+      </router-link>
+        <router-link to="/imoveis/adicionar">
+          <button class="contact-button">Adicionar Imovel</button>
+        </router-link>
+      </div>
       <!-- <div class="contact-button" @click="$router.push({ name: '/' })"> -->
         <!-- Página Inicial -->
       <!-- </div> -->
@@ -137,5 +147,8 @@ button {
 }
 button:hover {
   background-color: #e07626;
+}
+.mr{
+  margin-right: 10px;
 }
 </style>

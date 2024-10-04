@@ -8,7 +8,12 @@
           <!-- <h2>Consultoria Imobiliária</h2> -->
         </div>
       <h1>Querendo realizar seu sonho?</h1>
-      <button class="contact-button">Entrar em contato</button>
+      <div class="wrap">
+        <button class="contact-button mr">Entrar em contato</button>
+        <router-link to="/imoveis/adicionar">
+          <button class="contact-button">Adicionar Imovel</button>
+        </router-link>
+      </div>
       <!-- <div class="contact-button" @click="$router.push({ name: '/' })"> -->
         <!-- Página Inicial -->
       <!-- </div> -->

@@ -48,10 +48,10 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <!-- {{ imoveisStore.imoveis }} -->
-    <!-- <div v-for="item in imoveisStore.imoveis">
+  {{ imoveisStore.imoveis }}
+    <div v-for="item in imoveisStore.imoveis">
       {{ item }}
-    </div> -->
+    </div>
   <h1>Adicionar Produto</h1>
   <form class="form" @submit.prevent="save">
     <div class="row-form">
