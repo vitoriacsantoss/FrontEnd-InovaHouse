@@ -9,10 +9,11 @@ export const useImoveisStore = defineStore('imoveis', () => {
 
   async function getImoveis() {
     imoveis.value = await imoveisService.getImoveis();
+    console.log(imoveis.value)
   }
 
   async function getImovelByCategory(category_id) {
-    imoveis.value = await imoveisService.getProductsByCategory(category_id);
+    imoveis.value = await imoveisService.getImoveisByCategory(category_id);
   }
 
   async function createImovel(imovel) {

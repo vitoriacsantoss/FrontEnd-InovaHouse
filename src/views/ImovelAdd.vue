@@ -15,7 +15,7 @@ const showModal = ref(false);
 const file = ref(null);
 const previewImage = ref('');
 
-const product = reactive({
+const imovel = reactive({
   title: '',
   description: '',
   category: '', 
@@ -30,9 +30,9 @@ const uploadImage = (e) => {
 };
 
 async function save() {
-  product.image_attachment_key = await uploaderStore.uploadImage(file.value);
-  await imoveisStore.createProduct(product);
-  Object.assign(product, {
+  imovel.image_attachment_key = await uploaderStore.uploadImage(file.value);
+  await imoveisStore.createImovel(imovel);
+  Object.assign(imovel, {
     title: '',
     description: '',
     category: '',
@@ -56,16 +56,16 @@ onMounted(async () => {
   <form class="form" @submit.prevent="save">
     <div class="row-form">
       <label for="title">Título</label>
-      <input type="text" id="title" v-model="product.title" />
+      <input type="text" id="title" v-model="imovel.title" />
     </div>
     <div class="row-form">
       <label for="description">Descrição</label>
-      <textarea id="description" v-model="product.description"></textarea>
+      <textarea id="description" v-model="imovel.description"></textarea>
     </div>
     <div class="row-form">
       <label for="category">Categoria</label>
       <div class="row ">
-        <select id="category" v-model="product.category">
+        <select id="category" v-model="imovel.category">
           <option value="" disabled>Selecione uma categoria</option>
           <option
             v-for="category in categoryStore.categories"
@@ -92,11 +92,11 @@ onMounted(async () => {
     </div>
     <div class="row-form">
       <label for="price">Preço</label>
-      <input type="number" id="price" v-model="product.price" />
+      <input type="number" id="price" v-model="imovel.price" />
     </div>
     <div class="row-form">
       <label for="stock">Estoque</label>
-      <input type="number" id="stock" v-model="product.stock" />
+      <input type="number" id="stock" v-model="imovel.stock" />
     </div>
     <button class="btn-send" type="submit">Adicionar</button>
   </form>

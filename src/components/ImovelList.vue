@@ -24,30 +24,34 @@ watch(
 
 onMounted(async () => {
   await getImoveis();
+  console.log(getImoveis.value)
 });
 </script>
 
 <template>
   <div class="imovel-list">
-    <router-link :to="{ name: 'ImoveltAdd' }">
+    <router-link :to="{ name: 'ImovelAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
       </button>
     </router-link>
-    <div v-if="imoveisStore.products.length === 0">
+    <div v-if="imoveisStore.imoveis.length === 0">
       <p>Produtos não encontrados!!!</p>
     </div>
-    <div v-for="imovel in imoveisStore.products" :key="imovel.id" class="imovel-card">
+    <div v-for="imovel in imoveisStore.imoveis" :key="imovel.id" class="imovel-card">
       <div class="imovel-img-wrapper">
-        <img :src="imovel.image?.url" alt="imovel.name" />
+        <img src="/casa.jpeg" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
       <div class="imovel-title-price">
-        <p>{{ formatTitle(imovel.title) }}</p>
-        <p>{{ formatPrice(imovel.price * 1) }}</p>
+        <p> 
+          {{ formatPrice(imovel.preco * 1) }}</p>
       </div>
+      <div class="imovel-title-price">
+        <p>{{ (imovel.localizacao) }}</p>
+      </div>
+      
       <div class="imovel-description-stars">
-        <p>{{ formatDescription(imovel.description) }}</p>
         <div class="stars">
           <i class="mdi mdi-star" />
           <i class="mdi mdi-star" />

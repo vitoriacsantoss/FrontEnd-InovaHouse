@@ -7,14 +7,14 @@ import { useAuthStore } from '@/stores/auth';
 
 const authStore = useAuthStore();
 
-      await authStore.setToken(authToken);
-    
-onMounted(() => {
+
+onMounted(async() => {
+  await authStore.setToken(authToken);
   getUserInfo();
 });
 
 </script>
 
 <template>
-  <imovel-list />
+    <ImovelList />
 </template>
