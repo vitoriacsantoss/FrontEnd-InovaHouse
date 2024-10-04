@@ -16,7 +16,7 @@ const router = createRouter({
           component: HomeView,
         },
         {
-          path: '/produtos/adicionar',
+          path: '/imoveis/adicionar',
           name: 'ProductAdd',
           component: () => import('@/views/ProductAdd.vue'),
         },
