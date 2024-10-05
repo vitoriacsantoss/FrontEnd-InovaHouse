@@ -20,7 +20,7 @@ onBeforeRouteUpdate(() => {
         <router-link to="/login">
           <button class="contact-button mr">Página de Login</button>
         </router-link>
-        <router-link to="/home">
+        <router-link to="/">
         <button class="contact-button mr">Página Inicial</button>
       </router-link>
         <router-link to="/imoveis/adicionar">

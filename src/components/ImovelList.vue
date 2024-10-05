@@ -102,6 +102,7 @@ onMounted(async () => {
   font-family: 'Belleza', sans-serif;
 }
 
+
 .imovel-img-wrapper {
   display: flex;
   justify-content: center;
@@ -125,6 +126,7 @@ onMounted(async () => {
   align-items: center;
   margin-bottom: 1rem;
 }
+
 
 .imovel-title-price p {
   font-weight: bold;

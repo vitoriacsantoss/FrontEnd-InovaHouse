@@ -1,17 +1,37 @@
 <template>
-  <div class="header-container">
+  <div class="header-content">
+      <img src="@/assets/logo.png" alt="Logo" class="logo" />
+       <div class="logo_and_menu">
+    <logo-title class="mb-2" />
+    <div class="divider" />
+    <div class="menu">
+      <router-link to="/">
+        <button class="icon mdi mdi-home-outline mr"> Home </button>
+      </router-link>
+      <router-link to="/login">
+          <button class="contact-button mr">Página de Login</button>
+        </router-link>
+      <router-link to="/imoveis/adicionar">
+          <button class="contact-button">Adicionar Imovel</button>
+        </router-link>
+    </div>
+    <div class="divider" /> 
+    </div>
+  </div>
+
+  <!-- <div class="header-container">
     <div class="header-content">
       <img src="@/assets/logo.png" alt="Logo" class="logo" />
        <div class="logo_and_menu">
     <logo-title class="mb-2" />
     <div class="divider" />
     <div class="menu">
-      <router-link to="/home">
+      <router-link to="/">
         <i class="icon mdi mdi-home-outline" /> Home
       </router-link>
     </div>
     <div class="divider" /> 
-    </div>
+    </div> -->
 
     <!-- Menu hambúrguer -->
     <!-- <nav v-if="menuOpen" class="mobile-menu">
@@ -35,8 +55,8 @@
       <input type="text" placeholder="Mínimo" />
       <input type="text" placeholder="Máximo" />
     </div> -->
-    </div>
-  </div>
+    <!-- </div>
+  </div> -->
 </template>
 
 <script>
@@ -55,6 +75,29 @@ export default {
 </script>
 
 <style scoped>
+.mr{
+  margin-right: 10px;
+}
+button {
+  background-color: #ff8c32;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #e07626;
+}
+.menu{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 60px;
+  /* background-color: #ff8c32; */
+}
+.logo {
+  width: 100px;
+}
 .header-container {
   background-color: #ffffff;
   padding: 20px;
