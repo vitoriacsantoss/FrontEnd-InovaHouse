@@ -7,8 +7,96 @@ const showMenu = ref(false);
 onBeforeRouteUpdate(() => {
   showMenu.value = false;
 });
+
 </script>
+
 <template>
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="header-section">
+        <img src="@/assets/logo.png" alt="Logo" class="logo" />
+        <h1>Querendo realizar seu sonho?</h1>
+        <div class="wrap">
+        <router-link to="/login">
+          <button class="contact-button mr">Página de Login</button>
+        </router-link>
+        <router-link to="/home">
+        <button class="contact-button mr">Página Inicial</button>
+      </router-link>
+        <router-link to="/imoveis/adicionar">
+          <button class="contact-button">Adicionar Imovel</button>
+        </router-link>
+      </div>      </div>
+      <div class="contact-section">
+        <h3>Contato</h3>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Av Do Principe, 1186, Itapema do Norte - SC</li>
+          <li><i class="fas fa-envelope"></i> rfconsultoriaimobiliaria@outlook.com.br</li>
+          <li><i class="fas fa-phone"></i> (47) 3443-3178</li>
+          <li><i class="fas fa-whatsapp"></i> (47) 99684-3087</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<style scoped>
+.footer-container {
+  background-color: #f58220; /* cor laranja */
+  padding: 40px;
+  color: white;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.contact-button {
+  background-color: #003354; /* cor azul escura */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.contact-section {
+  background-color: #003354; /* cor azul escura */
+  padding: 20px;
+  color: white;
+}
+
+.contact-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-section li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.contact-section i {
+  margin-right: 10px;
+}
+</style>
+
+
+
+<!-- <template>
   <div id="footerMenu" :style="{ display: showMenu ? 'block' : 'none' }">
     <RouterLink to="/">
       <i class="mdi mdi-home-outline" />
@@ -86,4 +174,4 @@ onBeforeRouteUpdate(() => {
 .hamburger:hover {
     cursor: pointer;
 }
-</style>
+</style> -->

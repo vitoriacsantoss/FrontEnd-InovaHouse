@@ -9,7 +9,12 @@
         </div>
       <h1>Querendo realizar seu sonho?</h1>
       <div class="wrap">
-        <button class="contact-button mr">Entrar em contato</button>
+        <router-link to="/login">
+          <button class="contact-button mr">Página de Login</button>
+        </router-link>
+        <router-link to="/home">
+        <button class="contact-button mr">Página Inicial</button>
+      </router-link>
         <router-link to="/imoveis/adicionar">
           <button class="contact-button">Adicionar Imovel</button>
         </router-link>
@@ -62,6 +67,7 @@ export default {
 </script>
 
 <style scoped>
+
 .logo1 {
   display: flex;
   height: 100px;
@@ -142,5 +148,8 @@ button {
 }
 button:hover {
   background-color: #e07626;
+}
+.mr{
+  margin-right: 10px;
 }
 </style>

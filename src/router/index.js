@@ -11,7 +11,12 @@ const router = createRouter({
       children: [
         {
           path: '/home',
-          name: 'Home',
+          name: "Home",
+          component: () => import('@/views/HomeView.vue'),
+        },
+        {
+          path: '/login',
+          name: 'Login',
           component: () => import('@/views/LoginView.vue'),
         },
         {
@@ -19,11 +24,6 @@ const router = createRouter({
           name: 'ImovelAdd',
           component: () => import('@/views/ImovelAdd.vue'),
         },
-        {
-          path: '/erro',
-          name: "Erro",
-          component: () => import('@/views/HomeView.vue'),
-        }
       ],
     },
   ],

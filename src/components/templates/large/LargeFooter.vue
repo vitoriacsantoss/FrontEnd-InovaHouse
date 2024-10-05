@@ -8,10 +8,10 @@
         </div>
       <h1>Querendo realizar seu sonho?</h1>
       <div class="wrap">
-        <router-link to="/home">
+        <router-link to="/login">
           <button class="contact-button mr">Página de Login</button>
         </router-link>
-        <router-link to="/erro">
+        <router-link to="/home">
         <button class="contact-button mr">Página Inicial</button>
       </router-link>
         <router-link to="/imoveis/adicionar">

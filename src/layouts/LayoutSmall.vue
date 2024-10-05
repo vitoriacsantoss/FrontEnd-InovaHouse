@@ -5,15 +5,15 @@
 
 <template>
   <div id="layout-small">
-    <header>
+    <!-- <header> -->
       <small-header />
-    </header>
-    <main>
+    <!-- </header> -->
+    <aside>
       <router-view />
-    </main>
-    <footer>
+    </aside>
+    <!-- <footer> -->
       <small-footer />
-    </footer>
+    <!-- </footer> -->
   </div>
 </template>
 <style scoped>
