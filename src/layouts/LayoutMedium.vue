@@ -21,7 +21,7 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   /* display: grid; */
   /* grid-template-columns: 1fr 6fr;
   grid-template-rows: auto 1fr auto;
@@ -38,7 +38,7 @@ header {
   justify-content: flex-end;
   padding: 1.5rem;
   /* grid-area: header; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 aside {
@@ -50,7 +50,7 @@ aside {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   /* grid-area: aside; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
   margin: 20px auto;
   padding: 1rem;
 }
@@ -69,6 +69,6 @@ footer {
   padding: 3rem;
   background-color: #eeeeee;
   /* grid-area: footer; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 </style>
