@@ -45,7 +45,7 @@ button:hover {
   background-color: #e07626;
 }
 .menu{
-  margin-top: -60px;
+  margin-top: -90px;
   margin-bottom: 40px;
   margin-left: 200px;
   /* background-color: #ff8c32; */
@@ -53,6 +53,8 @@ button:hover {
 }
 .logo {
   width: 100px;
+  margin-left: 15px;
+  margin-top: 30px;
 }
 .icons {
   display: flex;
