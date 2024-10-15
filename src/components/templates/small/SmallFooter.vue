@@ -15,7 +15,9 @@ onBeforeRouteUpdate(() => {
     <div class="footer-content">
       <div class="header-section">
         <img src="@/assets/logo.png" alt="Logo" class="logo" />
+        <div class="querendo">
         <h1>Querendo realizar seu sonho?</h1>
+      </div>
         <div class="wrap">
         <router-link to="/login">
           <button class="contact-button mr">Página de Login</button>
@@ -42,6 +44,10 @@ onBeforeRouteUpdate(() => {
 
 
 <style scoped>
+.querendo{
+  
+}
+
 .footer-container {
   background-color: #f58220; /* cor laranja */
   padding: 40px;

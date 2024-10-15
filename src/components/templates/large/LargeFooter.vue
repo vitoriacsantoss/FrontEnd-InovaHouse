@@ -1,12 +1,16 @@
 <template>
   <div>
     <!-- Seção Amarela com a Mensagem -->
+
+    
     <section class="header-banner">
-      <div class="logo1">
+       <div class="logo1">
           <img src="@/assets/logo.png" alt="Logo" />
-          <!-- <h2>Consultoria Imobiliária</h2> -->
-        </div>
+           <!-- <h2>Consultoria Imobiliária</h2>  -->
+        </div> 
+        <div class="querendo">
       <h1>Querendo realizar seu sonho?</h1>
+    </div>
       <div class="wrap">
         <router-link to="/login">
           <button class="contact-button mr">Página de Login</button>
@@ -36,7 +40,7 @@
             <p>Tel: (47) 3443-3178</p>
             <p>WhatsApp: (47) 99684-3087</p>
           </div>
-          <div class="links">
+          <div class="link">
             <h3>Links</h3>
             <ul>
               <li><a href="#">Home</a></li>
@@ -67,12 +71,19 @@ export default {
 </script>
 
 <style scoped>
+.wrap{
+  margin-top: 50px;
+}
+.querendo{
+  margin-top: -120px;
+}
+
 .logo1 {
   display: flex;
   height: 100px;
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: -70px;
-  margin-left: 40px;
+  margin-left: 67px;
 }
 /* Estilo da Seção Amarela */
 .header-banner {
@@ -119,9 +130,16 @@ export default {
   width: 100%;
   max-width: 1200px;
 }
-.contact, .links, .contact-form {
+.contact-form{
+  margin-left: 100px;
+}
+.link{
+  margin-left: 100px;
+}
+.contact {
   flex: 1;
   margin: 10px;
+  margin-left: -50px;
 }
 h3 {
   color: #ff8c32;

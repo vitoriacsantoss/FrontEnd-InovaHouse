@@ -1,18 +1,20 @@
 <template>
-  <div class="header-content">
       <img src="@/assets/logo.png" alt="Logo" class="logo" />
+
+  <div class="header-content">
+      <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
        <div class="logo_and_menu">
     <logo-title class="mb-2" />
     <div class="divider" />
     <div class="menu">
       <router-link to="/">
-        <button class="icon mdi mdi-home-outline mr"> Home </button>
+        <button class="home"> Home </button>
       </router-link>
       <router-link to="/login">
-          <button class="contact-button mr">Página de Login</button>
+          <button class="login">Página de Login</button>
         </router-link>
       <router-link to="/imoveis/adicionar">
-          <button class="contact-button">Adicionar Imovel</button>
+          <button class="imovel">Adicionar Imovel</button>
         </router-link>
     </div>
     <div class="divider" /> 
@@ -75,6 +77,34 @@ export default {
 </script>
 
 <style scoped>
+.login{
+  margin-left: 10px;
+  height: 30px;
+  font-size: small;
+  font-weight: 100;
+  font-weight: bolder;
+}
+.imovel{
+  margin-left: 10px;
+  height: 30px;
+  font-size: small;
+  font-weight: 100;
+  font-weight: bolder;
+}
+.home{
+  margin-left: 85px;
+  height: 30px;
+  font-size: small;
+  font-weight: 100;
+  font-weight: bolder;
+}
+
+.header-content{
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin-top: -80px;
+}
 .mr{
   margin-right: 10px;
 }
@@ -88,13 +118,13 @@ button {
 button:hover {
   background-color: #e07626;
 }
-.menu{
+/* .menu{
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 10px;
-  margin-right: 60px;
+  margin-right: 60px; */
   /* background-color: #ff8c32; */
-}
+/* } */
 .logo {
   width: 100px;
 }

@@ -98,6 +98,8 @@ onMounted(async () => {
 }
 
 .imovel-card {
+  margin-bottom: 30px;
+  margin-top: 50px;
   width: 225px;
   font-family: 'Belleza', sans-serif;
 }
