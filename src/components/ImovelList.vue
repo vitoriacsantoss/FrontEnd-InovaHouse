@@ -158,7 +158,7 @@ const estado = ref('')
 <template>
   <div class="banner">
     <div class="carousel__item">
-
+      <img src="https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg" alt="">
     </div>
     <div class="form">
       <!-- <div class="form2"> -->
@@ -171,9 +171,7 @@ const estado = ref('')
 
       <select class="caixinha1" v-on:keypress="ok = false">
         <option value="">Todos</option>
-        <option value="Casa">Casa</option>
-        <option value="Apartamento">Apê</option>
-        <option value="Terreno">Terreno</option>
+
       </select>
 
       <select class="caixinha1" v-on:keypress="ok = false">
@@ -218,6 +216,20 @@ const estado = ref('')
 </template>
 
 <style scoped>
+.carousel__item {
+  /* height: auto; */
+  width: 100%;
+  color: var(--vc-clr-white);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../public/banner-1.jpg');
+  /* background-image: url('../../public/banner-1.jpg'); */
+  padding-top: 200px;
+  padding-bottom: 200px;
+  background-size: cover;
+}
 .botao {
   display: flex;
   align-items: center;
