@@ -10,7 +10,7 @@ const props = defineProps({
 
 <style scoped>
 button {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     color: black;
     /* padding: 20px; */
     border: 2px solid #ffffff;

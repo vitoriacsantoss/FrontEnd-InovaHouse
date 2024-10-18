@@ -148,6 +148,7 @@ onMounted(async () => {
 }
 </style> -->
 
+
 <script setup>
 // import DestaqueView from '@/components/DestaqueView.vue'
 import { ref } from 'vue'
@@ -161,8 +162,8 @@ const estado = ref('')
       <img src="https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg" alt="">
     </div>
     <div class="form">
-      <!-- <div class="form2"> -->
-      <!-- <div class="caixinha"> -->
+            <!-- <div class="form2"> -->
+            <!-- <div class="caixinha"> -->
 
       <select class="caixinha1" v-on:keypress="ok = false">
         <option value="">Comprar</option>
@@ -330,3 +331,69 @@ const estado = ref('')
   background-size: cover;
 }
 </style>
+
+<!-- 
+<script>
+import { useImoveisStore } from '../stores/imovel';
+import { computed, onMounted } from 'vue';
+
+export default {
+  setup() {
+    const imoveisStore = useImoveisStore();
+
+    // Computed para conectar com a lista de produtos no store
+    const imoveis = computed(() => imoveisStore.imoveis);
+    const selectedImoveis = computed({
+      get: () => imoveisStore.selectedImoveis,
+      set: (value) => (imoveisStore.selectedImoveis = value),
+    });
+
+    // Busca produtos ao montar o componente
+    onMounted(() => {
+      imoveisStore.fetchImoveis();
+    });
+
+    const buscar = () => {
+      console.log('Imoveis selecionados:', selectedImoveis.value);
+    };
+
+    return {
+      imoveis,
+      selectedImoveis,
+      buscar,
+    };
+  },
+};
+</script>
+<template>
+  <div class="container">
+    <h1>Selecione os Imoveis</h1>
+    <form @submit.prevent="buscar">
+      <label for="imoveis">Escolha os imoveis:</label>
+      <select v-model="selectedImoveis" multiple>
+        <option v-for="imovel in imoveis" :key="imovel.preco" :value="imovel.preco">{{ imovel.preco }}</option>
+      </select>
+      <br /><br />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div v-if="imoveis.length === 0">
+  <p>Carregando imóveis...</p>
+</div>
+<div v-else>
+  <h3>Imoveis selecionados:</h3>
+      <ul>
+        <li v-for="imovel in selectedImoveis" :key="imovel">{{ imovel.preco }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+<style scoped>
+.container{
+  padding: 50px;
+  background-color: aqua;
+}
+form {
+  margin-bottom: 20px;
+}
+</style> -->

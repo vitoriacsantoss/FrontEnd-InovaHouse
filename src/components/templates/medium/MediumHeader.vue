@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import MButton from '@/components/MButton.vue'
+
+</script>
 
 <template>
   <!-- <div class="icons"> -->
@@ -12,13 +15,13 @@
     <div class="divider" />
     <div class="menu">
       <router-link to="/">
-        <button class="icon mdi mdi-home-outline mr"> Home </button>
-      </router-link>
-      <router-link to="/login">
-          <button class="contact-button mr">Página de Login</button>
+          <m-button texto="Home" />
         </router-link>
-      <router-link to="/imoveis/adicionar">
-          <button class="contact-button">Adicionar Imovel</button>
+        <router-link to="/login">
+          <m-button texto="Página de Login"/>
+        </router-link>
+        <router-link to="/imoveis/adicionar">
+          <m-button texto="Adicionar Imovel"/>
         </router-link>
     </div>
     <div class="divider" /> 
@@ -31,17 +34,18 @@
   margin-right: 10px;
 }
 button {
-  background-color: #ff8c32;
-  color: white;
+  /* background-color: #ff8c32; */
+  color: black;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #e07626;
 }
 .menu{
-  margin-top: -60px;
+  margin-top: -90px;
   margin-bottom: 40px;
   margin-left: 200px;
   /* background-color: #ff8c32; */
@@ -49,6 +53,8 @@ button:hover {
 }
 .logo {
   width: 100px;
+  margin-left: 30px;
+  margin-top: 30px;
 }
 /* .icons {
   display: flex;

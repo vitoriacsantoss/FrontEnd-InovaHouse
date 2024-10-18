@@ -1,23 +1,23 @@
 <template>
-      <img src="@/assets/logo.png" alt="Logo" class="logo" />
+  <img src="@/assets/logo.png" alt="Logo" class="logo" />
 
   <div class="header-content">
-      <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
-       <div class="logo_and_menu">
-    <logo-title class="mb-2" />
-    <div class="divider" />
-    <div class="menu">
-      <router-link to="/">
-        <button class="home"> Home </button>
-      </router-link>
-      <router-link to="/login">
-          <button class="login">Página de Login</button>
+    <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
+    <div class="logo_and_menu">
+      <logo-title class="mb-2" />
+      <div class="divider" />
+      <div class="menu">
+        <router-link to="/">
+          <m-button texto="Home" />
         </router-link>
-      <router-link to="/imoveis/adicionar">
-          <button class="imovel">Adicionar Imovel</button>
+        <router-link to="/login">
+          <m-button texto="Página de Login" />
         </router-link>
-    </div>
-    <div class="divider" /> 
+        <router-link to="/imoveis/adicionar">
+          <m-button texto="Adicionar Imovel" />
+        </router-link>
+      </div>
+      <div class="divider" />
     </div>
   </div>
 
@@ -35,63 +35,82 @@
     <div class="divider" /> 
     </div> -->
 
-    <!-- Menu hambúrguer -->
-    <!-- <nav v-if="menuOpen" class="mobile-menu">
+  <!-- Menu hambúrguer -->
+  <!-- <nav v-if="menuOpen" class="mobile-menu">
       <ul>
         <li><a href="#">Anuncie Agora</a></li>
         <li><a href="#">Pesquisar Imóvel</a></li>
       </ul>
     </nav> -->
 
-    <!-- Seção de Pesquisa -->
-    <!-- <div class="search-section">
+  <!-- Seção de Pesquisa -->
+  <!-- <div class="search-section">
       <button class="announce-btn">Anuncie Agora</button>
       <button class="search-btn">Pesquisar Imóvel</button>
     </div> -->
 
-    <!-- Filtros de Imóveis -->
-    <!-- <div class="filters">
+  <!-- Filtros de Imóveis -->
+  <!-- <div class="filters">
       <button>Comprar</button>
       <button>Todos os Tipos</button>
       <button>Todos os Bairros</button>
       <input type="text" placeholder="Mínimo" />
       <input type="text" placeholder="Máximo" />
     </div> -->
-    <!-- </div>
+  <!-- </div>
   </div> -->
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      menuOpen: false, // Controla o menu hambúrguer
-    };
-  },
-  methods: {
-    toggleMenu() {
-      this.menuOpen = !this.menuOpen;
-    },
-  },
-};
+<script setup>
+import MButton from '@/components/MButton.vue'
+
 </script>
 
 <style scoped>
-.login{
+
+.menu {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 200px;
+  padding: auto;
+  margin-right: 60px;
+}
+
+.logo {
+  width: 100px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+
+button {
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e07626;
+}
+
+.login {
   margin-left: 10px;
   height: 30px;
   font-size: small;
   font-weight: 100;
   font-weight: bolder;
 }
-.imovel{
+
+.imovel {
   margin-left: 10px;
   height: 30px;
   font-size: small;
   font-weight: 100;
   font-weight: bolder;
 }
-.home{
+
+.home {
   margin-left: 85px;
   height: 30px;
   font-size: small;
@@ -99,15 +118,17 @@ export default {
   font-weight: bolder;
 }
 
-.header-content{
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   margin-top: -80px;
+.header-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -80px;
 }
-.mr{
+
+.mr {
   margin-right: 10px;
 }
+
 button {
   background-color: #ff8c32;
   color: white;
@@ -115,19 +136,22 @@ button {
   border: none;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #e07626;
 }
+
 /* .menu{
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 10px;
   margin-right: 60px; */
-  /* background-color: #ff8c32; */
+/* background-color: #ff8c32; */
 /* } */
 .logo {
   width: 100px;
 }
+
 .header-container {
   background-color: #ffffff;
   padding: 20px;
@@ -139,10 +163,6 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  width: 100px;
 }
 
 .hamburger-btn {
@@ -181,7 +201,8 @@ button:hover {
   margin: 20px 0;
 }
 
-.announce-btn, .search-btn {
+.announce-btn,
+.search-btn {
   background-color: #f58220;
   color: white;
   padding: 10px 20px;
@@ -200,7 +221,8 @@ button:hover {
   align-items: center;
 }
 
-.filters button, .filters input {
+.filters button,
+.filters input {
   margin: 10px 0;
   padding: 10px;
   width: 80%;
