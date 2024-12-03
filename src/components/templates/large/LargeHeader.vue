@@ -1,9 +1,14 @@
 <script setup>
 import MButton from '@/components/MButton.vue'
+import { useAuthStore } from '@/stores/auth';
+import { ref } from 'vue';
+const authStore = useAuthStore() 
+
 
 </script>
 
 <template>
+  <div class="tophead"></div>
   <img src="@/assets/logo.png" alt="Logo" class="logo" />
   <div class="header-content">
     <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
@@ -14,12 +19,13 @@ import MButton from '@/components/MButton.vue'
         <router-link to="/">
           <m-button texto="Home" />
         </router-link>
-        <router-link to="/login">
-          <m-button texto="Página de Login"/>
-        </router-link>
-        <router-link to="/imoveis/adicionar">
+        <router-link to="/imoveis/adicionar" v-if="authStore.islogged">
           <m-button texto="Adicionar Imovel"/>
         </router-link>
+        <router-link to="/login" v-else>
+          <m-button texto="Página de Login"/>
+        </router-link>
+        <div class="infouser" v-if="authStore.islogged"><p class="bem">Seja bem vindo(a)!</p>{{authStore.user.email}}</div>
       </div>
       <div class="divider" />
     </div>
@@ -35,6 +41,19 @@ import MButton from '@/components/MButton.vue'
 </template>
 
 <style scoped>
+.bem{
+  font-weight: bold;
+}
+
+.infouser{
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
 .login {
   margin-left: 50px;
   height: 40px;

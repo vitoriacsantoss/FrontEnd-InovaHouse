@@ -9,8 +9,9 @@ const authStore = useAuthStore();
 
 
 onMounted(async() => {
+  const authToken = localStorage.getItem('psg_auth_token')
   await authStore.setToken(authToken);
-  getUserInfo();
+  // getUserInfoe();
 });
 
 </script>
