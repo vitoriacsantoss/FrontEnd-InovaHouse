@@ -184,67 +184,13 @@ const estado = ref('')
 </script>
 
 <template>
-  <div class="banner">
-    <div class="carousel__item">
-      <img src="https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg" alt="">
-    </div>
-    <div class="form">
-            <!-- <div class="form2"> -->
-            <!-- <div class="caixinha"> -->
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Comprar</option>
-        <option value="Alugar">Alugar</option>
-      </select>
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Todos</option>
-
-      </select>
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Cidades</option>
-        <option value="Joinville">Joinville</option>
-        <option value="Araquari">Araquari</option>
-      </select>
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Bairros</option>
-        <option value="Joinville">Boehmerwald</option>
-        <option value="Araquari">Fátima</option>
-      </select>
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Quartos</option>
-        <option value="um">01</option>
-        <option value="dois">02</option>
-        <option value="mais">mais</option>
-      </select>
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Banheiros</option>
-        <option value="um">01</option>
-        <option value="dois">02</option>
-        <option value="mais">mais</option>
-      </select>
-
-      <select class="caixinha1" v-on:keypress="ok = false">
-        <option value="">Garagem</option>
-        <option value="um">01</option>
-        <option value="dois">02</option>
-        <option value="mais">mais</option>
-      </select>
-
-      <button class="botao" @click="$router.push({ name: 'buscar' })">BUSCAR</button>
-     
-    </div>
-  </div>
   <div class="destaques">
     <destaque-view />
   </div>
 
-<div class="list"></div>
-<hr>
-<div class="imovel-list">
+  <div class="list"></div>
+  <hr>
+  <div class="imovel-list">
     <router-link :to="{ name: 'ImovelAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
@@ -258,15 +204,15 @@ const estado = ref('')
         <img :src="imovel.foto?.url" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
-      
+
       <div class="imovel-title-price">
-        <p> 
+        <p>
           {{ formatPrice(imovel.preco * 1) }}</p>
       </div>
       <div class="imovel-title-price">
         <p>{{ (imovel.localizacao) }}</p>
       </div>
-      
+
       <div class="imovel-description-stars">
         <div class="stars">
           <i class="mdi mdi-star" />
@@ -282,20 +228,6 @@ const estado = ref('')
 </template>
 
 <style scoped>
-.carousel__item {
-  /* height: auto; */
-  width: 100%;
-  color: var(--vc-clr-white);
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('../../public/banner-1.jpg');
-  /* background-image: url('../../public/banner-1.jpg'); */
-  padding-top: 200px;
-  padding-bottom: 200px;
-  background-size: cover;
-}
 .botao {
   display: flex;
   align-items: center;

@@ -20,17 +20,8 @@ import LargeFooter from '@/components/templates/large/LargeFooter.vue';
 #layout-large {
   display: flex;
   flex-direction: column;
-
-  /* grid-template-columns: 1fr 5fr; */
-  /* grid-template-rows: auto 1fr auto; */
-  /* grid-template-areas:
-    'header'
-    'main'
-    'footer';  */
   min-height: 100vh;
   width: 100%;
-  /* border: 2px solid red; */
-
 }
 
 header {
@@ -38,23 +29,6 @@ header {
   widows: 100vw;
   justify-content: flex-end;
   padding: 1.5rem;
-  /* grid-area: header; */
-  /* border: 2px solid red; */
-
-}
-
-aside {
-  border-right: #eeeeee 1px solid;
-  box-shadow: 0 0 10px 0 #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  /* grid-area: aside; */
-  /* border: 2px solid red; */
-  margin: 20px auto;
-  padding: 1rem;
 }
 
 main {
