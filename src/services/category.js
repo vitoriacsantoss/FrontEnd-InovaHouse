@@ -7,7 +7,7 @@ export default class CategoryService {
   }
 
   async createCategory(category) {
-    const response = await axios.post('/categories/', category);
+    const response = await axios.post('/categoria/', category);
     return response.data;
   }
 }

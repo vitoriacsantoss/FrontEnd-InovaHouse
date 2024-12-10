@@ -2,7 +2,7 @@
 </script>
 <template>
   <div class="logo">
-    <img src="@/assets/logo.png" alt="FakeStore Logo" />
+    <img src="@/assets/logo.png" alt="Inova House" />
     <h2>Inova House</h2>
   </div>
 </template>

@@ -1,5 +1,16 @@
+<script setup>
+import MButton from '@/components/MButton.vue'
+import { useAuthStore } from '@/stores/auth';
+import { ref } from 'vue';
+const authStore = useAuthStore()
+
+
+</script>
 <template>
+  <div class="top-header">
+  </div>
   <img src="@/assets/logo.png" alt="Logo" class="logo" />
+
 
   <div class="header-content">
     <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
@@ -10,236 +21,136 @@
         <router-link to="/">
           <m-button texto="Home" />
         </router-link>
-        <router-link to="/login">
-          <m-button texto="Página de Login" />
-        </router-link>
-        <router-link to="/imoveis/adicionar">
+        <router-link to="/imoveis/adicionar" v-if="authStore.islogged">
           <m-button texto="Adicionar Imovel" />
         </router-link>
+        <router-link to="/login" v-else>
+          <m-button texto="Página de Login" />
+        </router-link>
+        <div class="infouser" v-if="authStore.islogged">
+          <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
+        </div>
       </div>
       <div class="divider" />
     </div>
   </div>
-
-  <!-- <div class="header-container">
-    <div class="header-content">
-      <img src="@/assets/logo.png" alt="Logo" class="logo" />
-       <div class="logo_and_menu">
-    <logo-title class="mb-2" />
-    <div class="divider" />
-    <div class="menu">
-      <router-link to="/">
-        <i class="icon mdi mdi-home-outline" /> Home
-      </router-link>
-    </div>
-    <div class="divider" /> 
-    </div> -->
-
-  <!-- Menu hambúrguer -->
-  <!-- <nav v-if="menuOpen" class="mobile-menu">
-      <ul>
-        <li><a href="#">Anuncie Agora</a></li>
-        <li><a href="#">Pesquisar Imóvel</a></li>
-      </ul>
-    </nav> -->
-
-  <!-- Seção de Pesquisa -->
-  <!-- <div class="search-section">
-      <button class="announce-btn">Anuncie Agora</button>
-      <button class="search-btn">Pesquisar Imóvel</button>
-    </div> -->
-
-  <!-- Filtros de Imóveis -->
-  <!-- <div class="filters">
-      <button>Comprar</button>
-      <button>Todos os Tipos</button>
-      <button>Todos os Bairros</button>
-      <input type="text" placeholder="Mínimo" />
-      <input type="text" placeholder="Máximo" />
-    </div> -->
-  <!-- </div>
-  </div> -->
 </template>
 
-<script setup>
-import MButton from '@/components/MButton.vue'
 
-</script>
 
 <style scoped>
-
-.menu {
-  margin-top: 10px;
-  margin-bottom: 40px;
-  margin-left: 200px;
-  padding: auto;
-  margin-right: 60px;
+.top-header {
+  padding: 20px 10px 10px 200px;
+  background-color: #02193c;
+  display: flex;
 }
-
 .logo {
-  width: 100px;
-  margin-left: 30px;
-  margin-top: 30px;
+  width: 35%;
+  margin-left: 30%;
 }
 
-
-button {
+.botao {
+  display: flex;
+  align-items: center;
+  background-color: #f28a31;
   color: black;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #e07626;
-}
-
-.login {
-  margin-left: 10px;
-  height: 30px;
-  font-size: small;
-  font-weight: 100;
-  font-weight: bolder;
-}
-
-.imovel {
-  margin-left: 10px;
-  height: 30px;
-  font-size: small;
-  font-weight: 100;
-  font-weight: bolder;
-}
-
-.home {
-  margin-left: 85px;
-  height: 30px;
-  font-size: small;
-  font-weight: 100;
-  font-weight: bolder;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: -80px;
-}
-
-.mr {
-  margin-right: 10px;
-}
-
-button {
-  background-color: #ff8c32;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #e07626;
-}
-
-/* .menu{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 60px; */
-/* background-color: #ff8c32; */
-/* } */
-.logo {
-  width: 100px;
-}
-
-.header-container {
-  background-color: #ffffff;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hamburger-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.mobile-menu {
-  position: absolute;
-  top: 70px;
-  left: 0;
-  right: 0;
-  background-color: #003354;
-  padding: 20px;
-  color: white;
-  z-index: 1000;
-}
-
-.mobile-menu ul {
-  list-style: none;
-  padding: 0;
-}
-
-.mobile-menu li {
+  width: 90%;
+  max-width: 300px;
   margin: 10px 0;
-}
-
-.mobile-menu a {
-  color: white;
-  text-decoration: none;
-}
-
-.search-section {
-  margin: 20px 0;
-}
-
-.announce-btn,
-.search-btn {
-  background-color: #f58220;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  margin: 10px;
+  padding: 12px;
+  border: 2px solid #f28a31;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 10px 20px;
 }
 
-.filters {
-  background-color: rgba(0, 51, 84, 0.8);
+.botao:hover {
+  background-color: #d46b26;
+  /* Laranja mais escuro no hover */
+  transform: scale(1.03);
+  /* Leve crescimento no hover */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  /* Elementos em coluna */
+  align-items: center;
+  /* Centraliza os itens */
   padding: 20px;
+  border-top: 7px solid #f28a31;
+  background-color: #102442;
+  opacity: 90%;
+  width: 90%;
+  /* Ocupa 90% da tela */
+  max-width: 400px;
+  /* Largura máxima em telas maiores */
+  margin: 20px auto;
+  /* Centraliza o formulário */
   border-radius: 10px;
+  /* Bordas arredondadas */
+}
+
+.caixinha1 {
+  width: 100%;
+  max-width: 300px;
+  padding: 0 10px;
+  margin: 10px 0;
+  background-color: #01081d80;
+  height: 38px;
+  line-height: 38px;
+  font-family: sans-serif;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+}
+
+.inner-text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.filters button,
-.filters input {
-  margin: 10px 0;
-  padding: 10px;
-  width: 80%;
-  font-size: 16px;
+.banner1 {
+  background-image: url('https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.filters button {
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
+.banner1 img {
+  max-width: 100px;
+  /* Mantém a logo pequena */
+  height: auto;
+  margin-bottom: 20px;
+  /* Espaço abaixo da logo */
 }
 
-.filters input {
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  color: #000;
+/* Responsividade */
+@media (min-width: 768px) {
+  .form {
+    max-width: 400px;
+    /* Mantém tamanho ideal em tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    max-width: 400px;
+    /* Largura fixa em desktops */
+  }
 }
 </style>
 
@@ -257,8 +168,8 @@ button:hover {
       </router-link>
     </div>
     <div class="divider" /> -->
-    
-    <!-- <div class="menu">
+
+<!-- <div class="menu">
       <router-link to="/">
         <i class="icon mdi mdi-account-circle-outline" /> Perfil
       </router-link>
@@ -269,7 +180,7 @@ button:hover {
         <i class="icon mdi mdi-account" /> Login
       </router-link>
     </div> -->
-  <!-- </div>
+<!-- </div>
   <logo-title />
 </template>
 <style scoped>

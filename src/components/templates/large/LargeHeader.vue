@@ -2,13 +2,16 @@
 import MButton from '@/components/MButton.vue'
 import { useAuthStore } from '@/stores/auth';
 import { ref } from 'vue';
-const authStore = useAuthStore() 
+const authStore = useAuthStore()
 
 
 </script>
 
 <template>
-  <div class="tophead"></div>
+  <div class="top-header">
+
+  </div>
+
   <img src="@/assets/logo.png" alt="Logo" class="logo" />
   <div class="header-content">
     <!-- <img src="@/assets/logo.png" alt="Logo" class="logo" /> -->
@@ -20,12 +23,14 @@ const authStore = useAuthStore()
           <m-button texto="Home" />
         </router-link>
         <router-link to="/imoveis/adicionar" v-if="authStore.islogged">
-          <m-button texto="Adicionar Imovel"/>
+          <m-button texto="Adicionar Imovel" />
         </router-link>
         <router-link to="/login" v-else>
-          <m-button texto="Página de Login"/>
+          <m-button texto="Página de Login" />
         </router-link>
-        <div class="infouser" v-if="authStore.islogged"><p class="bem">Seja bem vindo(a)!</p>{{authStore.user.email}}</div>
+        <div class="infouser" v-if="authStore.islogged">
+          <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
+        </div>
       </div>
       <div class="divider" />
     </div>
@@ -41,11 +46,17 @@ const authStore = useAuthStore()
 </template>
 
 <style scoped>
-.bem{
+.top-header {
+  padding: 30px 10px 10px 200px;
+  background-color: #02193c;
+  display: flex;
+}
+
+.bem {
   font-weight: bold;
 }
 
-.infouser{
+.infouser {
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -90,15 +101,16 @@ const authStore = useAuthStore()
 }
 
 button {
-  /* background-color: #ff8c32; */
+  background-color: #f28a31;
   color: black;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  margin-right: 20px;
 }
 
 button:hover {
-  background-color: #e07626;
+  background-color: #f8caa7;
 }
 
 /* .menu{
@@ -124,4 +136,5 @@ button:hover {
   border: 2px solid red;
   width: 100%;
   gap: 1rem;
-}</style>
+}
+</style>
