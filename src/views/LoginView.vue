@@ -3,7 +3,6 @@ import '@passageidentity/passage-elements/passage-auth';
 </script>
 
 <template>
-  <h1>Login</h1>
   <div class="authContainer">
     <passage-auth
       app-id='UsFPUC3jICOgvwpIjSLIGv9C'
@@ -11,4 +10,9 @@ import '@passageidentity/passage-elements/passage-auth';
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.authContainer{
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+</style>

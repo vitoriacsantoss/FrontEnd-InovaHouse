@@ -17,10 +17,11 @@ onMounted(async () => {
 </script>
 
 <template>
-
   <div class="banner1">
+    <div class="shadow"></div>
     <div class="inner-text">
-      <div class="form">
+    </div>
+    <div class="form">
         <select class="caixinha1" v-on:keypress="ok = false">
           <option value="">Comprar</option>
           <option value="Alugar">Alugar</option>
@@ -66,7 +67,6 @@ onMounted(async () => {
         <button class="botao" @click="$router.push({ name: 'buscar' })">BUSCAR</button>
       </div>
 
-    </div>
   </div>
 
   <div class="imovel">
@@ -75,6 +75,30 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.banner1 {
+  background-image: url('https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  min-height: 400px;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  width:100%;
+  height: 100%;
+  background-color:#01081d80;
+  z-index: 1;
+}
+
+
 .botao {
   display: flex;
   align-items: center;
@@ -98,7 +122,7 @@ onMounted(async () => {
   padding: 20px;
   border-top: 7px solid #f28a31;
   background-color: #102442;
-  opacity: 90%;
+  opacity: 80%;
   width: 90%;
   max-width: 700px;
   height: auto;
@@ -106,6 +130,7 @@ onMounted(async () => {
   position: relative;
   margin: 20px auto;
   border-radius: 10px; 
+  z-index: 2;
 }
 
 .caixinha1 {
@@ -131,20 +156,6 @@ onMounted(async () => {
   justify-content: center;
 }
 
-.banner1 {
-  background-image: url('https://www.rafaelfonsecaimoveis.com.br/assets/img/banner-1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: auto;
-  min-height: 400px;
-  background-position: center;
-  position: relative;
-  opacity: 85%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-}
 
 
 @media (min-width: 768px) {
