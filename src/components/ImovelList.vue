@@ -1,154 +1,3 @@
-<!-- <script setup>
-import { onMounted, watch } from 'vue';
-import { useImoveisStore } from '@/stores/imovel';
-
-import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
-
-const props = defineProps(['category_id']);
-const imoveisStore = useImoveisStore();
-
-async function getImoveis() {
-  if (props.category_id) {
-    await imoveisStore.getImovelByCategory(props.category_id);
-  } else {
-    await imoveisStore.getImoveis();
-  }
-}
-
-watch(
-  () => props.category_id,
-  async () => {
-    await getImoveis();
-  },
-);
-
-onMounted(async () => {
-  await getImoveis();
-  console.log(getImoveis.value)
-});
-</script>
-
-<template>
-  <div class="imovel-list">
-    <router-link :to="{ name: 'ImovelAdd' }">
-      <button class="icon ">
-        <i class="mdi mdi-plus" />
-      </button>
-    </router-link>
-    <div v-if="imoveisStore.imoveis.length === 0">
-      <p>Produtos não encontrados!!!</p>
-    </div>
-    <div v-for="imovel in imoveisStore.imoveis" :key="imovel.id" class="imovel-card">
-      <div class="imovel-img-wrapper">
-        <img :src="imovel.foto?.url" alt="imovel.name" />
-        <i class="mdi mdi-heart-outline" />
-      </div>
-      
-      <div class="imovel-title-price">
-        <p> 
-          {{ formatPrice(imovel.preco * 1) }}</p>
-      </div>
-      <div class="imovel-title-price">
-        <p>{{ (imovel.localizacao) }}</p>
-      </div>
-      
-      <div class="imovel-description-stars">
-        <div class="stars">
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-</template>
-
-<style scoped>
-.icon {
-  background-color: #0a2668;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-
-  position: fixed;
-  bottom: 12rem;
-  right: 20px;
-}
-
-.icon:hover {
-  background-color: #bac9e8;
-  color: #0a2668;
-}
-
-.icon i {
-  font-size: 2rem;
-}
-
-.imovel-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
-}
-
-.imovel-card {
-  margin-bottom: 30px;
-  margin-top: 50px;
-  width: 225px;
-  font-family: 'Belleza', sans-serif;
-}
-
-
-.imovel-img-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  gap: 0.5rem;
-  padding-top: 20px;
-  margin-bottom: 1rem;
-  background-color: #eeeeee;
-  height: 201px;
-}
-
-.imovel-img-wrapper img {
-  width: 153px;
-  height: 170px;
-  object-fit: cover;
-}
-
-.imovel-title-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-
-.imovel-title-price p {
-  font-weight: bold;
-  font-size: 16px;
-  color: #010101;
-}
-
-.imovel-description-stars {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.imovel-description-stars p {
-  font-size: 12px;
-  color: #535050;
-}
-</style> -->
-
-
 <script setup>
 import { onMounted, watch } from 'vue';
 import { useImoveisStore } from '@/stores/imovel';
@@ -185,12 +34,12 @@ const estado = ref('')
 
 <template>
   <div class="destaques">
-    <destaque-view />
+    <h1>DESTAQUES</h1>
   </div>
 
-  <div class="list"></div>
-  <hr>
+
   <div class="imovel-list">
+
     <router-link :to="{ name: 'ImovelAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
@@ -204,30 +53,79 @@ const estado = ref('')
         <img :src="imovel.foto?.url" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
-
-      <div class="imovel-title-price">
-        <p>
-          {{ formatPrice(imovel.preco * 1) }}</p>
+      <div class="details">
+        <ul>
+      <div class="imovel-title">
+        <h3>{{ (imovel.nome) }}</h3>
       </div>
-      <div class="imovel-title-price">
-        <p>{{ (imovel.localizacao) }}</p>
+      <div class="writes-cards">
+        <div class="imovel-price">
+          <p>{{ formatPrice(imovel.preco * 1) }}</p>
+        </div>
+        <div class="location">
+          <p>
+            {{ (imovel.localizacao) }}
+          </p>
+        </div>
+        <div class="metragem">
+          <p>{{ (imovel.metragem) }} m²</p>
+        </div>
+        <div class="quartos">
+          <p>{{ (imovel.quantidade_quarto) }} Quartos</p>
+        </div>
+        <div class="banheiro">
+          <p>
+            {{ (imovel.quantidade_banheiro) }} Banheiros
+          </p>
+          <div class="suite" v-if="(imovel.quantidade_suite) === 0 ">
+          <p>Não há suítes</p>
+        </div>
+          <div class="suite" v-else>
+          <p> {{ imovel.quantidade_suite }} suítes</p> 
+        </div>
+        </div>
       </div>
 
-      <div class="imovel-description-stars">
-        <div class="stars">
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
+      </ul>
+        <div class="imovel-description-stars">
+          <div class="stars">
+            <i class="mdi mdi-star" />
+            <i class="mdi mdi-star" />
+            <i class="mdi mdi-star" />
+            <i class="mdi mdi-star" />
+            <i class="mdi mdi-star" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
+    </div>
 </template>
 
 <style scoped>
+.destaques{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 70px;
+  font-weight:bolder;
+  color: #000;
+}
+.details{
+  padding: 16px;
+}
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: orange;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
 .botao {
   display: flex;
   align-items: center;
@@ -251,24 +149,9 @@ const estado = ref('')
   flex-direction: row;
   flex-wrap: wrap;
   flex: 1;
-  /* border-radius: 2%; */
-  /* margin-left: 200px;
-  margin-top: 50px; */
-  /* padding: 20px; */
-  /* height: 20%; */
-  /* background-color: #f28a31; */
 }
 
-/* .caixinha {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-} */
-
-
-
 .caixinha1 {
-  /* font-weight: bold; */
   padding: 0 70px;
   width: 40%;
   margin-left: 16px;
@@ -279,7 +162,6 @@ const estado = ref('')
   color: white;
   font-size: 15px;
   background: #01081d80;
-  /* margin-top: 10%; */
 }
 
 .titu {
@@ -291,10 +173,8 @@ const estado = ref('')
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: center; */
   align-items: center;
   padding: 30px;
-  /* font-weight: bold; */
   border-top: 7px solid #f28a31;
   background-color: #0f0f4180;
   height: 400px;
@@ -360,43 +240,37 @@ const estado = ref('')
 }
 
 .imovel-card {
-  margin-bottom: 30px;
-  margin-top: 50px;
-  width: 225px;
-  font-family: 'Belleza', sans-serif;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 
 .imovel-img-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  gap: 0.5rem;
-  padding-top: 20px;
-  margin-bottom: 1rem;
-  background-color: #eeeeee;
-  height: 201px;
+  position: relative;
 }
 
 .imovel-img-wrapper img {
-  width: 153px;
-  height: 170px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
 }
 
-.imovel-title-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+.imovel-title h3 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #e76d03;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.imovel-price{
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom: 16px;
 }
 
 
-.imovel-title-price p {
-  font-weight: bold;
-  font-size: 16px;
-  color: #010101;
-}
 
 .imovel-description-stars {
   display: flex;
@@ -409,69 +283,3 @@ const estado = ref('')
   color: #535050;
 }
 </style>
-
-<!-- 
-<script>
-import { useImoveisStore } from '../stores/imovel';
-import { computed, onMounted } from 'vue';
-
-export default {
-  setup() {
-    const imoveisStore = useImoveisStore();
-
-    // Computed para conectar com a lista de produtos no store
-    const imoveis = computed(() => imoveisStore.imoveis);
-    const selectedImoveis = computed({
-      get: () => imoveisStore.selectedImoveis,
-      set: (value) => (imoveisStore.selectedImoveis = value),
-    });
-
-    // Busca produtos ao montar o componente
-    onMounted(() => {
-      imoveisStore.fetchImoveis();
-    });
-
-    const buscar = () => {
-      console.log('Imoveis selecionados:', selectedImoveis.value);
-    };
-
-    return {
-      imoveis,
-      selectedImoveis,
-      buscar,
-    };
-  },
-};
-</script>
-<template>
-  <div class="container">
-    <h1>Selecione os Imoveis</h1>
-    <form @submit.prevent="buscar">
-      <label for="imoveis">Escolha os imoveis:</label>
-      <select v-model="selectedImoveis" multiple>
-        <option v-for="imovel in imoveis" :key="imovel.preco" :value="imovel.preco">{{ imovel.preco }}</option>
-      </select>
-      <br /><br />
-      <button type="submit">Buscar</button>
-    </form>
-
-    <div v-if="imoveis.length === 0">
-  <p>Carregando imóveis...</p>
-</div>
-<div v-else>
-  <h3>Imoveis selecionados:</h3>
-      <ul>
-        <li v-for="imovel in selectedImoveis" :key="imovel">{{ imovel.preco }}</li>
-      </ul>
-    </div>
-  </div>
-</template>
-<style scoped>
-.container{
-  padding: 50px;
-  background-color: aqua;
-}
-form {
-  margin-bottom: 20px;
-}
-</style> -->

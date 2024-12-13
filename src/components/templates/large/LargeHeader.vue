@@ -20,13 +20,13 @@ const authStore = useAuthStore()
       <div class="divider" />
       <div class="menu">
         <router-link to="/">
-          <m-button texto="Home" />
+          <m-button texto="Home" class="m-button"/>
         </router-link>
         <router-link to="/imoveis/adicionar" v-if="authStore.islogged">
-          <m-button texto="Adicionar Imovel" />
+          <m-button texto="Adicionar Imovel" class="m-button"/>
         </router-link>
         <router-link to="/login" v-else>
-          <m-button texto="Página de Login" />
+          <m-button texto="Página de Login" class="m-button"/>
         </router-link>
         <div class="infouser" v-if="authStore.islogged">
           <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
@@ -46,6 +46,9 @@ const authStore = useAuthStore()
 </template>
 
 <style scoped>
+.m-button{
+  color: white;
+}
 .top-header {
   padding: 30px 10px 10px 200px;
   background-color: #02193c;
