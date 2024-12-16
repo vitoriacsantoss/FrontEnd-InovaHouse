@@ -16,12 +16,13 @@ const file = ref(null);
 const previewImage = ref('');
 
 const imovel = reactive({
-  title: '',
+  nome: '',
   description: '',
-  category: '', 
-  image_attachment_key: '',
-  price: '',
-  stock: '',
+  categoria: '', 
+  codigo: 1,
+  preco: '',
+  metragem: '',
+  foto_attachment_key: null,
 });
 
 const uploadImage = (e) => {
@@ -30,29 +31,35 @@ const uploadImage = (e) => {
 };
 
 async function save() {
-  imovel.image_attachment_key = await uploaderStore.uploadImage(file.value);
-  await imoveisStore.createImovel(imovel);
-  Object.assign(imovel, {
-    title: '',
-    description: '',
-    category: '',
-    image_attachment_key: '',
-    price: '',
-    stock: '',
-  });
+  try {
+    imovel.foto_attachment_key = await uploaderStore.uploadImage(file.value);
+    console.log('Socorro 3' + imovel.foto_attachment_key)
+    await imoveisStore.createImovel(imovel);
+    Object.assign(imovel, {
+      nome: '',
+      description: '',
+      categoria: '',
+      preco: '',
+      metragem: '',
+    });
+  } catch (error) {
+    console.log(error);
+    
+  }
 }
 
 onMounted(async () => {
   await imoveisStore.getImoveis();
-  console.log(imoveisStore.imoveis)
+  await categoryStore.getCategories()  
 });
 </script>
+
 <template>
   <h1>Adicionar Produto</h1>
   <form class="form" @submit.prevent="save">
     <div class="row-form">
-      <label for="title">Título</label>
-      <input type="text" id="title" v-model="imovel.title" />
+      <label for="nome">Título</label>
+      <input type="text" id="nome" v-model="imovel.nome" />
     </div>
     <div class="row-form">
       <label for="description">Descrição</label>
@@ -61,14 +68,14 @@ onMounted(async () => {
     <div class="row-form">
       <label for="category">Categoria</label>
       <div class="row ">
-        <select id="category" v-model="imovel.category">
+        <select id="category" v-model="imovel.categoria">
           <option value="" disabled>Selecione uma categoria</option>
           <option
             v-for="category in categoryStore.categories"
             :key="category.id"
             :value="category.id"
           >
-            {{ category.name }}
+            {{ category.nome }}
           </option>
         </select>
         <button class="btn-icon" @click="showModal = !showModal">+</button>
@@ -87,12 +94,12 @@ onMounted(async () => {
       </div>
     </div>
     <div class="row-form">
-      <label for="price">Preço</label>
-      <input type="number" id="price" v-model="imovel.price" />
+      <label for="preco">Preço</label>
+      <input type="number" id="preco" v-model="imovel.preco" />
     </div>
     <div class="row-form">
-      <label for="stock">Estoque</label>
-      <input type="number" id="stock" v-model="imovel.stock" />
+      <label for="metragem">Estoque</label>
+      <input type="number" id="metragem" v-model="imovel.metragem" />
     </div>
     <button class="btn-send" type="submit">Adicionar</button>
   </form>

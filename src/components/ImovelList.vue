@@ -33,10 +33,6 @@ const estado = ref('')
 </script>
 
 <template>
-  <div class="destaques">
-    <h1>DESTAQUES</h1>
-  </div>
-
 
   <div class="imovel-list">
 
@@ -232,6 +228,7 @@ const estado = ref('')
 }
 
 .imovel-list {
+  margin-top: 4%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

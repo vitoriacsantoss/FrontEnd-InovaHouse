@@ -1,10 +1,16 @@
 <script setup>
 import MButton from '@/components/MButton.vue'
 import { useAuthStore } from '@/stores/auth';
-import { ref } from 'vue';
-const authStore = useAuthStore()
+import { onMounted } from 'vue';
 
+const { islogged, user } = useAuthStore()
 
+onMounted(() => 
+{
+  console.log(islogged);
+  
+}
+)
 </script>
 
 <template>
@@ -22,14 +28,14 @@ const authStore = useAuthStore()
         <router-link to="/">
           <m-button texto="Home" class="m-button"/>
         </router-link>
-        <router-link to="/imoveis/adicionar" v-if="authStore.islogged">
+        <router-link to="/imoveis/adicionar" v-if="islogged">
           <m-button texto="Adicionar Imovel" class="m-button"/>
         </router-link>
         <router-link to="/login" v-else>
           <m-button texto="Página de Login" class="m-button"/>
         </router-link>
-        <div class="infouser" v-if="authStore.islogged">
-          <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
+        <div class="infouser" v-if="islogged">
+          <p class="bem">Seja bem vindo(a)!</p>{{ user.email }}
         </div>
       </div>
       <div class="divider" />

@@ -6,6 +6,7 @@ const imoveisService = new ImoveisService();
 
 export const useImoveisStore = defineStore('imoveis', () => {
   const imoveis = ref([]);
+  const currentImovel = ref(null)
 
   async function getImoveis() {
     imoveis.value = await imoveisService.getImoveis();
@@ -21,5 +22,5 @@ export const useImoveisStore = defineStore('imoveis', () => {
     getImoveis();
   }
 
-  return { imoveis, getImoveis, getImovelByCategory, createImovel };
+  return { imoveis, getImoveis, getImovelByCategory, createImovel, currentImovel };
 });

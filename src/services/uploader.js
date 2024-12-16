@@ -9,6 +9,7 @@ export default class UploaderService {
         'Content-Type': 'multipart/form-data',
       },
     });
+    console.log("Socorro" + response.data)
     return response.data;
   }
 }

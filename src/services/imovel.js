@@ -7,7 +7,7 @@ export default class ImoveisService {
   }
 
   async getImoveisByCategory(category_id) {
-    const response = await axios.get(`/imoveis/?category__id=${category_id}`);
+    const response = await axios.get(`/imoveis/${category_id}`);
     return response.data.results;
   }
 

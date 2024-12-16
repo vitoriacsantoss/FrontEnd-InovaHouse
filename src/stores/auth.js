@@ -16,6 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = await authService.postUserToken(token);
       islogged.value = true
     } catch (err) {
+      console.log(err);
       islogged.value = false
     }
   }
