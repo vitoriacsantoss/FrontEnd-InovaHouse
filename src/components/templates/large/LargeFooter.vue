@@ -1,3 +1,19 @@
+<script setup>
+
+import { useAuthStore } from '@/stores/auth';
+import { onMounted } from 'vue';
+
+const { islogged, user } = useAuthStore()
+
+onMounted(() => 
+{
+  console.log(islogged);
+  
+}
+)
+</script>
+
+
 <template>
   <div>
     <!-- Seção Amarela com a Mensagem -->
@@ -12,14 +28,15 @@
       <h1>Querendo realizar seu sonho?</h1>
     </div>
       <div class="wrap">
-        <router-link to="/login">
-          <button class="contact-button mr">Página de Login</button>
-        </router-link>
+      
         <router-link to="/">
         <button class="contact-button mr">Página Inicial</button>
       </router-link>
-        <router-link to="/imoveis/adicionar">
+        <router-link to="/imoveis/adicionar" v-if="islogged">
           <button class="contact-button">Adicionar Imovel</button>
+        </router-link>
+        <router-link to="/login"  v-else>
+          <button class="contact-button mr">Página de Login</button>
         </router-link>
       </div>
       <!-- <div class="contact-button" @click="$router.push({ name: '/' })"> -->

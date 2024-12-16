@@ -24,6 +24,11 @@ const router = createRouter({
           name: 'ImovelAdd',
           component: () => import('@/views/ImovelAdd.vue'),
         },
+        {
+          path: '/buscar/imoveis',
+          name: 'BuscarImoveis',
+          component: () => import('@/views/BuscarImoveis.vue'),
+        },
       ],
     },
   ],

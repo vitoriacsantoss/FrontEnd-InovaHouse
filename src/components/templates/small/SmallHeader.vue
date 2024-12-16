@@ -27,9 +27,6 @@ const authStore = useAuthStore()
         <router-link to="/login" v-else>
           <m-button texto="Página de Login" />
         </router-link>
-        <div class="infouser" v-if="authStore.islogged">
-          <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
-        </div>
       </div>
       <div class="divider" />
     </div>
@@ -44,6 +41,7 @@ const authStore = useAuthStore()
   background-color: #02193c;
   display: flex;
 }
+
 .logo {
   width: 35%;
   margin-left: 30%;

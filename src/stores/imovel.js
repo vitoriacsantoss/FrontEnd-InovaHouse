@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { defineStore } from 'pinia';
 
 import ImoveisService from '@/services/imovel';
@@ -7,6 +7,13 @@ const imoveisService = new ImoveisService();
 export const useImoveisStore = defineStore('imoveis', () => {
   const imoveis = ref([]);
   const currentImovel = ref(null)
+  const filtros = reactive({
+    quartos: 0,
+    banheiros: 0,
+    suite: 0,
+    metragem: 0,
+    categoria: 0
+  })
 
   async function getImoveis() {
     imoveis.value = await imoveisService.getImoveis();
@@ -22,5 +29,5 @@ export const useImoveisStore = defineStore('imoveis', () => {
     getImoveis();
   }
 
-  return { imoveis, getImoveis, getImovelByCategory, createImovel, currentImovel };
+  return { imoveis, getImoveis, getImovelByCategory, createImovel, currentImovel, filtros };
 });

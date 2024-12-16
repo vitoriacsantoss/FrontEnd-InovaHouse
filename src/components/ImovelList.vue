@@ -1,34 +1,16 @@
 <script setup>
-import { onMounted, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useImoveisStore } from '@/stores/imovel';
 
-import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
+import { formatPrice } from '@/helpers/format';
 
-const props = defineProps(['category_id']);
 const imoveisStore = useImoveisStore();
-
-async function getImoveis() {
-  if (props.category_id) {
-    await imoveisStore.getImovelByCategory(props.category_id);
-  } else {
-    await imoveisStore.getImoveis();
-  }
-}
-
-watch(
-  () => props.category_id,
-  async () => {
-    await getImoveis();
-  },
-);
+const imoveis = ref([])
 
 onMounted(async () => {
-  await getImoveis();
-  console.log(getImoveis.value)
+  await imoveisStore.getImoveis()
+  imoveis.value = imoveisStore.imoveis.filter((imovel) => imovel.metragem <= imoveisStore.filtros.metragem && imovel.quantidade_banheiro <= imoveisStore.filtros.banheiros && imovel.quantidade_quarto <= imoveisStore.filtros.quartos && imovel.quantidade_suite <= imoveisStore.filtros.suite)
 });
-// import DestaqueView from '@/components/DestaqueView.vue'
-import { ref } from 'vue'
-const estado = ref('')
 
 </script>
 
@@ -42,47 +24,47 @@ const estado = ref('')
       </button>
     </router-link>
     <div v-if="imoveisStore.imoveis.length === 0">
-      <p>Produtos não encontrados!!!</p>
+      <p class="prodn">IMÓVEIS NÃO ENCONTRADOS!! </p>
     </div>
-    <div v-for="imovel in imoveisStore.imoveis" :key="imovel.id" class="imovel-card">
+    <div v-for="imovel in imoveis" :key="imovel.id" class="imovel-card">
       <div class="imovel-img-wrapper">
         <img :src="imovel.foto?.url" alt="imovel.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
       <div class="details">
         <ul>
-      <div class="imovel-title">
-        <h3>{{ (imovel.nome) }}</h3>
-      </div>
-      <div class="writes-cards">
-        <div class="imovel-price">
-          <p>{{ formatPrice(imovel.preco * 1) }}</p>
-        </div>
-        <div class="location">
-          <p>
-            {{ (imovel.localizacao) }}
-          </p>
-        </div>
-        <div class="metragem">
-          <p>{{ (imovel.metragem) }} m²</p>
-        </div>
-        <div class="quartos">
-          <p>{{ (imovel.quantidade_quarto) }} Quartos</p>
-        </div>
-        <div class="banheiro">
-          <p>
-            {{ (imovel.quantidade_banheiro) }} Banheiros
-          </p>
-          <div class="suite" v-if="(imovel.quantidade_suite) === 0 ">
-          <p>Não há suítes</p>
-        </div>
-          <div class="suite" v-else>
-          <p> {{ imovel.quantidade_suite }} suítes</p> 
-        </div>
-        </div>
-      </div>
+          <div class="imovel-title">
+            <h3>{{ (imovel.nome) }}</h3>
+          </div>
+          <div class="writes-cards">
+            <div class="imovel-price">
+              <p>{{ formatPrice(imovel.preco * 1) }}</p>
+            </div>
+            <div class="location">
+              <p>
+                {{ (imovel.localizacao) }}
+              </p>
+            </div>
+            <div class="metragem">
+              <p>{{ (imovel.metragem) }} m²</p>
+            </div>
+            <div class="quartos">
+              <p>{{ (imovel.quantidade_quarto) }} Quartos</p>
+            </div>
+            <div class="banheiro">
+              <p>
+                {{ (imovel.quantidade_banheiro) }} Banheiros
+              </p>
+              <div class="suite" v-if="(imovel.quantidade_suite) === 0">
+                <p class="nhs">Não há suítes</p>
+              </div>
+              <div class="suite" v-else>
+                <p> {{ imovel.quantidade_suite }} suítes</p>
+              </div>
+            </div>
+          </div>
 
-      </ul>
+        </ul>
         <div class="imovel-description-stars">
           <div class="stars">
             <i class="mdi mdi-star" />
@@ -94,23 +76,28 @@ const estado = ref('')
         </div>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <style scoped>
-.destaques{
+.nhs{ 
+  font-weight: bold;
+}
+.prodn {
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 70px;
-  font-weight:bolder;
-  color: #000;
+  font-weight: bolder;
+  color: #ff0000;
 }
-.details{
-  padding: 16px;
+
+.details {
+  padding: 20px;
 }
+
 .badge {
   position: absolute;
   top: 8px;
@@ -232,12 +219,13 @@ const estado = ref('')
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1rem;
 }
 
 .imovel-card {
   display: flex;
+  flex: 1 1 calc(33.333% - 1.5rem); 
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
@@ -261,7 +249,7 @@ const estado = ref('')
   font-family: 'Quicksand', sans-serif;
 }
 
-.imovel-price{
+.imovel-price {
   font-size: 20px;
   font-weight: bolder;
   margin-bottom: 16px;

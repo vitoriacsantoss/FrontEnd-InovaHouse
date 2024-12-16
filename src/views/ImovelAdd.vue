@@ -55,10 +55,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>Adicionar Produto</h1>
   <form class="form" @submit.prevent="save">
     <div class="row-form">
-      <label for="nome">Título</label>
+      <label for="nome">Nome</label>
       <input type="text" id="nome" v-model="imovel.nome" />
     </div>
     <div class="row-form">
@@ -82,7 +81,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="row-form">
-      <label for="image">Imagem</label>
+      <label for="image">Foto</label>
       <div class="row">
         <input type="file" id="image" @change="uploadImage" />
         <img
@@ -98,7 +97,7 @@ onMounted(async () => {
       <input type="number" id="preco" v-model="imovel.preco" />
     </div>
     <div class="row-form">
-      <label for="metragem">Estoque</label>
+      <label for="metragem">Metragem</label>
       <input type="number" id="metragem" v-model="imovel.metragem" />
     </div>
     <button class="btn-send" type="submit">Adicionar</button>
@@ -112,9 +111,17 @@ onMounted(async () => {
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  color: #0a2668;
+  padding: 12px;
+  font-weight: bold;
+  padding: 16px;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .row-form {

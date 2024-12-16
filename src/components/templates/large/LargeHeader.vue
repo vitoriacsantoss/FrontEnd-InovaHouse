@@ -28,15 +28,15 @@ onMounted(() =>
         <router-link to="/">
           <m-button texto="Home" class="m-button"/>
         </router-link>
-        <router-link to="/imoveis/adicionar" v-if="islogged">
+        <router-link to="/buscar/imoveis">
+          <m-button texto="Buscar Imoveis" class="m-button"/>
+        </router-link>
+        <router-link to="/imoveis/adicionar">
           <m-button texto="Adicionar Imovel" class="m-button"/>
         </router-link>
-        <router-link to="/login" v-else>
+        <router-link to="/login">
           <m-button texto="Página de Login" class="m-button"/>
         </router-link>
-        <div class="infouser" v-if="islogged">
-          <p class="bem">Seja bem vindo(a)!</p>{{ user.email }}
-        </div>
       </div>
       <div class="divider" />
     </div>

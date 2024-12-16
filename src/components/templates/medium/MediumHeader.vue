@@ -28,9 +28,6 @@ const authStore = useAuthStore()
         <router-link to="/login" v-else>
           <m-button texto="Página de Login" />
         </router-link>
-        <div class="infouser" v-if="authStore.islogged">
-          <p class="bem">Seja bem vindo(a)!</p>{{ authStore.user.email }}
-        </div>
       </div>
       <div class="divider" />
     </div>
@@ -47,6 +44,7 @@ const authStore = useAuthStore()
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
 .top-header {
   padding: 30px 10px 10px 200px;
   background-color: #02193c;

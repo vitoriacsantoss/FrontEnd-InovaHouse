@@ -1,6 +1,7 @@
 <script setup>
 import LargeHeader from '@/components/templates/large/LargeHeader.vue';
 import LargeFooter from '@/components/templates/large/LargeFooter.vue';
+import ImovelList from '@/components/ImovelList.vue';
 </script>
 <template>
   <div id="layout-large">
